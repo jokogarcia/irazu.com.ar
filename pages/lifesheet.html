@@ -22,10 +22,15 @@
         <h2>Technical Breakdown</h2>
         
     <p> The application frontend is built using ReactJS with Typescript, utilizing Tailwind and Lucide for the UI components. The backend is powered by Node.js and Express, with a MongoDB database for storing user data and CV templates. This tech stack allows for a responsive and dynamic user experience, while also ensuring scalability and maintainability.</p>
-    <p>For PDF generation, the document is generated also using React and levering the CSS 'break' directives to manage page breaks. Then, the PDF is generated on the server-side using Puppeteer, ensuring a high-quality output that preserves the layout and styling of the CV.</p>
+    <p>For PDF generation, the document is generated also using React and levering the CSS for advanced formatting. Then, the PDF is generated on the server-side using Puppeteer, ensuring a high-quality output that preserves the layout and styling of the CV.</p>
     <p>AI features are implemented using <strong>Gemini.AI</strong>. The heavy lifting is done by the model, of course. The only notable effort on my part was to craft the format of the JSON that holds the CV in a way that is easy for the model to understand and work with.</p>
     <h3>Auth</h3>
     <p>Authentication is handled using a self-hosted <strong>Keycloak</strong> instance, providing a robust and flexible solution for user management and access control. This option was chosen due to its open-source nature, good reputation and community support</p>
+    <h3>SaaS</h3>
+    <p>Lifesheet is a Software as a Service (SaaS) platform, allowing users to access the service via a web browser without the need for local installation. This model provides several advantages, including easy updates, scalability, and accessibility from any device with an internet connection. The service is offered in two Tiers: Free and Premium</p>
+    <p>The main difference between the to two service levels is that the Free tiers offers a very limmited ammount of AI Operations, while the Premium tier providers a much less limited offering</p>
+    <h4>Payment</h4>
+    <p>Payments are handled using a <strong>Stripe</strong> integration, allowing for secure and efficient processing of user subscriptions and transactions.</p>
 
     </div>
 </body>
