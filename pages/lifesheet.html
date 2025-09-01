@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joaquin Garcia - Portfolio | lifesheet</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+</head>
+
+<body>
+    <div class = "w3-content">
+        <div class="w3-container w3-justify">
+        <h1><a href="https://lifesheet.irazu.com.ar">Lifesheet</a></h1>
+        <p><a href="https://lifesheet.irazu.com.ar">https://lifesheet.irazu.com.ar</a></p>
+        <p><strong>Lifesheet</strong> is an online service geared towards assisting job seekers
+            in crafting and formatting their CVs. When applying to a job, it is crucial to present a well-structured CV that highlights relevant skills and experiences effectively. This often means tailoring the CV to match the specific job description and requirements. It is also not uncommon nowadays to need to apply to hundreds of job posting before getting an interview. This is where Lifesheet comes in. The user can start by simply pouring all their information into the platform, regardless of relevance to any individual job. Then, when applying to a specific job, the user can select which information is relevant to that particular position, and Lifesheet will generate a well-formatted CV ready for submission. This approach not only saves time but also ensures that each application is targeted and professional, increasing the chances of landing an interview.
+
+            <h3>AI assistance</h3>
+            Premium users can also use AI assistance to tailor a CV to a job description, and also to generate cover letters.
+        </p>
+        <h2>Technical Breakdown</h2>
+        
+    <p> The application frontend is built using ReactJS with Typescript, utilizing Tailwind and Lucide for the UI components. The backend is powered by Node.js and Express, with a MongoDB database for storing user data and CV templates. This tech stack allows for a responsive and dynamic user experience, while also ensuring scalability and maintainability.</p>
+    <p>For PDF generation, the document is generated also using React and levering the CSS 'break' directives to manage page breaks. Then, the PDF is generated on the server-side using Puppeteer, ensuring a high-quality output that preserves the layout and styling of the CV.</p>
+    <p>AI features are implemented using <strong>Gemini.AI</strong>. The heavy lifting is done by the model, of course. The only notable effort on my part was to craft the format of the JSON that holds the CV in a way that is easy for the model to understand and work with.</p>
+    <h3>Auth</h3>
+    <p>Authentication is handled using a self-hosted <strong>Keycloak</strong> instance, providing a robust and flexible solution for user management and access control. This option was chosen due to its open-source nature, good reputation and community support</p>
+
+    </div>
+</body>
+
+</html>
