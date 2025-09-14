@@ -3,36 +3,86 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="google-adsense-account" content="ca-pub-3139876867817737">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joaquin Garcia - Portfolio | lifesheet</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 </head>
 
 <body>
-    <div class = "w3-content">
-        <div class="w3-container w3-justify">
-        <h1><a href="https://lifesheet.irazu.com.ar">Lifesheet</a></h1>
-        <p><a href="https://lifesheet.irazu.com.ar">https://lifesheet.irazu.com.ar</a></p>
-        <p><strong>Lifesheet</strong> is an online service geared towards assisting job seekers
-            in crafting and formatting their CVs. When applying to a job, it is crucial to present a well-structured CV that highlights relevant skills and experiences effectively. This often means tailoring the CV to match the specific job description and requirements. It is also not uncommon nowadays to need to apply to hundreds of job posting before getting an interview. This is where Lifesheet comes in. The user can start by simply pouring all their information into the platform, regardless of relevance to any individual job. Then, when applying to a specific job, the user can select which information is relevant to that particular position, and Lifesheet will generate a well-formatted CV ready for submission. This approach not only saves time but also ensures that each application is targeted and professional, increasing the chances of landing an interview.
+    <div class="w3-content">
+        <div class="w3-container">
+            <h1><a href="https://lifesheet.irazu.com.ar">Lifesheet</a></h1>
+            <p><a href="https://lifesheet.irazu.com.ar">https://lifesheet.irazu.com.ar</a></p>
+            <div class="w3-block"><img alt="Lifesheet's Dashboard" class="text-wide" src="/images/lifesheet/dashboard.png"></div>
+            Lifesheet is an online platform designed to help job seekers create and format their CVs with ease. Its
+            primary goal is to simplify the process of building a professional resume, ensuring that users can present
+            their skills and experiences in the most effective way possible.</p>
 
-            <h3>AI assistance</h3>
-            Premium users can also use AI assistance to tailor a CV to a job description, and also to generate cover letters.
-        </p>
-        <h2>Technical Breakdown</h2>
-        
-    <p> The application frontend is built using ReactJS with Typescript, utilizing Tailwind and Lucide for the UI components. The backend is powered by Node.js and Express, with a MongoDB database for storing user data and CV templates. This tech stack allows for a responsive and dynamic user experience, while also ensuring scalability and maintainability.</p>
-    <p>For PDF generation, the document is generated also using React and levering the CSS for advanced formatting. Then, the PDF is generated on the server-side using Puppeteer, ensuring a high-quality output that preserves the layout and styling of the CV.</p>
-    <p>AI features are implemented using <strong>Gemini.AI</strong>. The heavy lifting is done by the model, of course. The only notable effort on my part was to craft the format of the JSON that holds the CV in a way that is easy for the model to understand and work with.</p>
-    <h3>Auth</h3>
-    <p>Authentication is handled using a self-hosted <strong>Keycloak</strong> instance, providing a robust and flexible solution for user management and access control. This option was chosen due to its open-source nature, good reputation and community support</p>
-    <h3>SaaS</h3>
-    <p>Lifesheet is a Software as a Service (SaaS) platform, allowing users to access the service via a web browser without the need for local installation. This model provides several advantages, including easy updates, scalability, and accessibility from any device with an internet connection. The service is offered in two Tiers: Free and Premium</p>
-    <p>The main difference between the to two service levels is that the Free tiers offers a very limmited ammount of AI Operations, while the Premium tier providers a much less limited offering</p>
-    <h4>Payment</h4>
-    <p>Payments are handled using a <strong>Stripe</strong> integration, allowing for secure and efficient processing of user subscriptions and transactions.</p>
+            <p>This service is ideal for anyone actively searching for employment, especially those who need to apply to
+                multiple job postings. Lifesheet recognizes that each job application may require a tailored CV that
+                highlights specific qualifications relevant to the position, or a Cover Letter. Instead of manually editing their resume
+                for every application, users can input all their information into Lifesheet and later select which details are most pertinent for each job. They can either make these selections manually or leverage the built-in AI assistant to automatically identify the most relevant information based on the job description.</p>
 
-    </div>
+            <p>By streamlining the CV customization process, Lifesheet addresses the common challenge of applying to
+                numerous jobs and increases the chances of landing an interview. Users save time and effort, while also
+                ensuring that every application is targeted and professional.</p>
+
+                <h3>Demo Video</h3>
+                <div class="w3-block w3-center"><video controls class="text-wide" src="/images/lifesheet/lifesheet-demo.mp4"></video></div>
+            <h4>SaaS</h4>
+            <p>Lifesheet is a Software as a Service (SaaS) platform, allowing users to access the service via a web
+                browser without the need for local installation. This model provides several advantages, including easy
+                updates, scalability, and accessibility from any device with an internet connection. The service is
+                offered in two Tiers: Free and Premium</p>
+            <h5>Ads for the Free Tier</h5>
+            <p>Users on the free tier, get access to the same features as premium users, but with ads displayed
+                throughout the application. We integrate with Google AdSense for this purpose.</p>
+            <h2>Technical Breakdown</h2>
+
+            <p> The application frontend is built using ReactJS with Typescript, utilizing Tailwind as a CSS framework.
+                The backend is powered by Node.js and Express, with a MongoDB database for storing user data and CV
+                templates. This tech stack allows for a responsive and dynamic user experience, while also ensuring
+                scalability and maintainability.
+            </p>
+            <p>
+                The infrastructure is modest: every backend component operates in it's own Docker container. An Nginx
+                instance operates as a Gateway and also takes care of TLS.
+            </p>
+            <p>Even though, the frontend and backend are not served by the same "service", they do share the same
+                domain, which makes CORS configuration straightforward.</p>
+            <h3>PDF Generation</h3>
+            <p>For PDF generation, the document is generated on the frontend with a combination of JavaScript and CSS
+                for advanced formatting. Then, the PDF is generated on the server-side using Puppeteer, ensuring a
+                high-quality output that preserves the layout and styling of the CV.</p>
+
+            <h3>Auth</h3>
+            <p>Authentication is handled using a self-hosted <strong>Keycloak</strong> instance, providing a robust and
+                flexible solution for user management and access control. This option was chosen due to its open-source
+                nature, good reputation and community support</p>
+            
+
+            <h3>AI-Features and Message based coordination for long-lived operations</h3>
+
+            <p>AI features are implemented using <strong>Gemini.AI</strong>. The prompts are carefully crafted to ensure
+                compatibility with the document structure expected by the platform's template, as well as to ensure the
+                model only uses the true information provided by the user, without any fabrication.</p>
+            <p> API calls to Gemini, or any other LLM can often take several minutes to complete. Ordinary REST calls
+                can timeoutduring this time, therefore we use a message-based approach to coordinate these long-lived
+                operations.</p>
+            <p>On the backend, we use BullMQ to create jobs for each AI-dependant operation. This also allows us to
+                easily implement retry logic with exponential backoff when a AI API calls fails with a transiernt error.
+            </p>
+            <p>For the frontend, this means that when calling for an AI-operation to execute, the request is sent to the
+                backend and a job is created in the BullMQ queue. The frontend can then poll the backend for the status
+                of the job, allowing for a responsive user experience even for long-running operations. It also means
+                that the user can safely close the browser or navigate away from the page without losing the progress of
+                the operation.</p>
+            <h5>Stripe Integration</h5>
+            <p>Payments for the Premium tiers are handled using a <strong>Stripe</strong> integration, allowing for secure and efficient processing of user subscriptions and transactions.</p>
+            <p>Payments are carried out using the Checkout Session workflow, which provides a seamless and secure payment experience for users. The backend then receives the payment confirmation in a webhook, marking the purchase as complete.</p>
+        </div>
+
 </body>
 
 </html>
