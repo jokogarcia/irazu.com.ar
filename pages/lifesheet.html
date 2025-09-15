@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joaquin Garcia - Portfolio | lifesheet</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
     <div class="w3-content">
         <div class="w3-container">
             <h1><a href="https://lifesheet.irazu.com.ar">Lifesheet</a></h1>
-            <p><a href="https://lifesheet.irazu.com.ar">https://lifesheet.irazu.com.ar</a></p>
-            <div class="w3-block"><img alt="Lifesheet's Dashboard" class="text-wide" src="/images/lifesheet/dashboard.png"></div>
+            <div style="display: flex; justify-content: space-between; width: 100%;"><p><a href="https://lifesheet.irazu.com.ar">https://lifesheet.irazu.com.ar</a><span class="w3-margin-left">Code: <a href="https://github.com/jokogarcia/lifesheet-project">github.com/jokogarcia/lifesheet-project</a></span></p></div>
+            <div class="w3-block"><img class="w3-image w3-border" alt="Lifesheet's Dashboard" class="text-wide" src="/images/lifesheet/dashboard.png"></div>
             Lifesheet is an online platform designed to help job seekers create and format their CVs with ease. Its
             primary goal is to simplify the process of building a professional resume, ensuring that users can present
             their skills and experiences in the most effective way possible.</p>
@@ -28,9 +29,10 @@
                 numerous jobs and increases the chances of landing an interview. Users save time and effort, while also
                 ensuring that every application is targeted and professional.</p>
 
-                <h3>Demo Video</h3>
-                <div class="w3-block w3-center"><video controls class="text-wide" src="/images/lifesheet/lifesheet-demo.mp4"></video></div>
+                <!-- <h3>Demo Video</h3>
+                <div class="w3-block w3-center"><video controls class="text-wide" src="/images/lifesheet/lifesheet-demo.mp4"></video></div> -->
             <h4>SaaS</h4>
+            <div class="w3-block"><img class="w3-image w3-border" alt="Lifesheet's CV Editor" class="text-wide" src="/images/lifesheet/plans.png"></div>
             <p>Lifesheet is a Software as a Service (SaaS) platform, allowing users to access the service via a web
                 browser without the need for local installation. This model provides several advantages, including easy
                 updates, scalability, and accessibility from any device with an internet connection. The service is
@@ -39,21 +41,36 @@
             <p>Users on the free tier, get access to the same features as premium users, but with ads displayed
                 throughout the application. We integrate with Google AdSense for this purpose.</p>
             <h2>Technical Breakdown</h2>
-
+                <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+                    <img class="brandlogo" src="/images/logos/react.svg" alt="ReactJS">
+                    <img class="brandlogo" src="/images/logos/ts-lettermark-blue.svg" alt="Typescript">
+                    <img class="brandlogo" src="/images/logos/tailwindcss.svg" alt="Tailwind CSS">
+                    <img class="brandlogo" src="/images/logos/nodejs.svg" alt="Node.js">
+                    <img class="brandlogo" src="/images/logos/express-js-logo.png" alt="Express">
+                    <img class="brandlogo" src="/images/logos/mongodb.svg" alt="MongoDB">
+                    <img class="brandlogo" src="/images/logos/keycloak.svg" alt="Keycloak">
+                    <img class="brandlogo" src="/images/logos/redis.svg" alt="Redis">
+                    <img class="brandlogo" src="/images/logos/nginx.svg" alt="Nginx">
+                    <img class="brandlogo" style="background-color: gray; border-radius: 5px;" src="/images/logos/bullmq.png" alt="BullMQ">
+                </div>
             <p> The application frontend is built using ReactJS with Typescript, utilizing Tailwind as a CSS framework.
                 The backend is powered by Node.js and Express, with a MongoDB database for storing user data and CV
                 templates. This tech stack allows for a responsive and dynamic user experience, while also ensuring
                 scalability and maintainability.
             </p>
+            <img class="w3-image w3-margin" alt="Lifesheet's Infrastructure Diagram" class="text-wide" src="/images/lifesheet/infrastructure.png">
             <p>
                 The infrastructure is modest: every backend component operates in it's own Docker container. An Nginx
                 instance operates as a Gateway and also takes care of TLS.
             </p>
             <p>Even though, the frontend and backend are not served by the same "service", they do share the same
-                domain, which makes CORS configuration straightforward.</p>
+                domain, which makes CORS configuration straightforward, as well as allowing the application to seamlessly 
+                migrate to another server, or to run in a local dev environment.</p>
+
             <h3>PDF Generation</h3>
+            <img class="w3-image w3-margin" alt="Lifesheet's PDF Generation Diagram" class="text-wide" src="/images/lifesheet/pdf-export.png">
             <p>For PDF generation, the document is generated on the frontend with a combination of JavaScript and CSS
-                for advanced formatting. Then, the PDF is generated on the server-side using Puppeteer, ensuring a
+                for advanced formatting. Then, the resulting HTML is sent to the backend where a PDF document is generated using Puppeteer, ensuring a
                 high-quality output that preserves the layout and styling of the CV.</p>
 
             <h3>Auth</h3>
@@ -64,6 +81,7 @@
 
             <h3>AI-Features and Message based coordination for long-lived operations</h3>
 
+            <img class="w3-image w3-margin" alt="Lifesheet's AI Features Diagram" class="text-wide" src="/images/lifesheet/ai-tailoring.png">
             <p>AI features are implemented using <strong>Gemini.AI</strong>. The prompts are carefully crafted to ensure
                 compatibility with the document structure expected by the platform's template, as well as to ensure the
                 model only uses the true information provided by the user, without any fabrication.</p>

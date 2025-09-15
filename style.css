@@ -83,3 +83,8 @@
             opacity: 0.8;
         }
     }
+    img.brandlogo {
+        height: 2em;
+        margin: 1em;
+        vertical-align: middle;
+    }
