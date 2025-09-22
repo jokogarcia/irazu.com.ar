@@ -13,8 +13,8 @@
 <body>
     <div class="w3-content">
         <div class="w3-container">
-            <h1><a href="https://lifesheet.irazu.com.ar">Lifesheet</a></h1>
-            <div style="display: flex; justify-content: space-between; width: 100%;"><p><a href="https://lifesheet.irazu.com.ar">https://lifesheet.irazu.com.ar</a><span class="w3-margin-left">Code: <a href="https://github.com/jokogarcia/lifesheet-project">github.com/jokogarcia/lifesheet-project</a></span></p></div>
+            <h1><a href="https://lifesheet.online">Lifesheet</a></h1>
+            <div style="display: flex; justify-content: space-between; width: 100%;"><p><a href="https://lifesheet.online">https://lifesheet.online</a><span class="w3-margin-left">Code: <a href="https://github.com/jokogarcia/lifesheet-project">github.com/jokogarcia/lifesheet-project</a></span></p></div>
             <div class="w3-block"><img class="w3-image w3-border text-wide" alt="Lifesheet's Dashboard" src="/images/lifesheet/dashboard.png"></div>
             Lifesheet is an online platform designed to help job seekers create and format their CVs with ease. Its
             primary goal is to simplify the process of building a professional resume, ensuring that users can present
@@ -40,7 +40,15 @@
             <h5>Ads for the Free Tier (Pending approval by AdSense)</h5>
             <p>Users on the free tier, get access to the same features as premium users, but with ads displayed
                 throughout the application. We integrate with Google AdSense for this purpose.</p>
+            <h4>Multilingual Support</h4>
+            <p>The platform supports multiple languages, allowing users from different linguistic backgrounds to utilize the service effectively.
+                This is achieved through a combination of localization techniques and AI-powered translation features, ensuring that users 
+                can get the UI in their preferred language and create CVs in their preferred language.</p>
+                <p>A translation feature is also available, allowing users to translate their CVs into different languages with ease.</p>
+                <p>Currently, English, Spanish and German are supported.</p>
+            </p>
             <h2>Technical Breakdown</h2>
+            
                 <div style="display: flex; justify-content: center; flex-wrap: wrap;">
                     <img class="w3-image brandlogo" src="/images/logos/react.svg" alt="ReactJS">
                     <img class="w3-image brandlogo" src="/images/logos/ts-lettermark-blue.svg" alt="Typescript">
@@ -53,6 +61,15 @@
                     <img class="w3-image brandlogo" src="/images/logos/nginx.svg" alt="Nginx">
                     <img class="w3-image brandlogo" style="background-color: gray; border-radius: 5px;" src="/images/logos/bullmq.png" alt="BullMQ">
                 </div>
+                <h3>Index</h3>
+                <ul>
+                    <li><a href="#tech-stack-overview">Tech Stack and Architecture Overview</a></li>
+                    <li><a href="#pdf-generation">PDF Generation</a></li>
+                    <li><a href="#auth">Auth</a></li>
+                    <li><a href="#ai-features">AI-Features and Message based coordination for long-lived operations</a></li>
+                    <li><a href="#stripe-integration">Stripe Integration</a></li>
+                </ul>
+                <h3 id="tech-stack-overview">Tech Stack and Architecture Overview</h3>
             <p> The application frontend is built using ReactJS with Typescript, utilizing Tailwind as a CSS framework.
                 The backend is powered by Node.js and Express, with a MongoDB database for storing user data and CV
                 templates. This tech stack allows for a responsive and dynamic user experience, while also ensuring
@@ -67,19 +84,19 @@
                 domain, which makes CORS configuration straightforward, as well as allowing the application to seamlessly 
                 migrate to another server, or to run in a local dev environment.</p>
 
-            <h3>PDF Generation</h3>
+            <h3 id="pdf-generation">PDF Generation</h3>
             <img class="w3-image w3-margin text-wide" alt="Lifesheet's PDF Generation Diagram" src="/images/lifesheet/pdf-export.png">
             <p>For PDF generation, the document is generated on the frontend with a combination of JavaScript and CSS
                 for advanced formatting. Then, the resulting HTML is sent to the backend where a PDF document is generated using Puppeteer, ensuring a
                 high-quality output that preserves the layout and styling of the CV.</p>
 
-            <h3>Auth</h3>
+            <h3 id="auth">Auth</h3>
             <p>Authentication is handled using a self-hosted <strong>Keycloak</strong> instance, providing a robust and
                 flexible solution for user management and access control. This option was chosen due to its open-source
                 nature, good reputation and community support</p>
             
 
-            <h3>AI-Features and Message based coordination for long-lived operations</h3>
+            <h3 id="ai-features">AI-Features and Message based coordination for long-lived operations</h3>
 
             <img class="w3-image w3-margin text-wide" alt="Lifesheet's AI Features Diagram" src="/images/lifesheet/ai-tailoring.png">
             <p>AI features are implemented using <strong>Gemini.AI</strong>. The prompts are carefully crafted to ensure
@@ -96,7 +113,7 @@
                 of the job, allowing for a responsive user experience even for long-running operations. It also means
                 that the user can safely close the browser or navigate away from the page without losing the progress of
                 the operation.</p>
-            <h5>Stripe Integration</h5>
+            <h3 id="stripe-integration">Stripe Integration</h3>
             <p>Payments for the Premium tiers are handled using a <strong>Stripe</strong> integration, allowing for secure and efficient processing of user subscriptions and transactions.</p>
             <p>Payments are carried out using the Checkout Session workflow, which provides a seamless and secure payment experience for users. The backend then receives the payment confirmation in a webhook, marking the purchase as complete.</p>
         </div>

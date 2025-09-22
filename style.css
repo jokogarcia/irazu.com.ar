@@ -88,3 +88,11 @@
         margin: 1em;
         vertical-align: middle;
     }
+    .section-title {
+        font-family: 'Doto', sans-serif; 
+        font-weight: 900; 
+        color: lightgreen !important;
+        margin-top: 1px;
+        margin-bottom: 1px;
+
+    }
