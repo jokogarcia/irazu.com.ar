@@ -96,3 +96,18 @@
         margin-bottom: 1px;
 
     }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Doto', sans-serif; 
+        font-weight: 900;
+    }
+    div.nav{
+        a{
+            font-family: 'Doto', sans-serif; 
+            font-weight: 700;
+            font-size: large;
+        }
+        a:hover {
+            color:lightgreen !important;
+            font-weight: 900;
+        }
+    }

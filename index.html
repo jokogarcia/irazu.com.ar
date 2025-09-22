@@ -23,11 +23,11 @@
         <h3 style="font-family: 'Doto', sans-serif; font-weight: 700; margin-top: 0px;">Software Developer</h3>
         </div>
       </div>
-      <div class="w3-padding-64">
-        <a href="#" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16">Home</a>
-        <a href="#portfolio" class="w3-button w3-black w3-block w3-hover-teal w3-padding-16">My Work</a>
-        <a href="#resume" class="w3-button w3-black w3-block w3-hover-dark-grey w3-padding-16">Resume</a>
-        <a href="#contact" class="w3-button w3-black w3-block w3-hover-brown w3-padding-16">Contact</a>
+      <div class="w3-padding-64 nav">
+        <a href="#" class="w3-button w3-black w3-block w3-hover-black w3-padding-12">Home</a>
+        <a href="#portfolio" class="w3-button w3-black w3-block w3-hover-black w3-padding-12">Portfolio</a>
+        <a href="#resume" class="w3-button w3-black w3-block w3-hover-black w3-padding-12">Resume</a>
+        <a href="#contact" class="w3-button w3-black w3-block w3-hover-black w3-padding-12">Contact</a>
       </div>
     </div>
     <div class="w3-half w3-blue-grey w3-container" style="height: 700px">
@@ -55,7 +55,7 @@
       <div class="portfolio-item">
         <a href="/pages/lifesheet.html"><img class="w3-image" src="/images/lifesheet-logo.png" alt="Lifesheet" />
           <div>Online CV builder with AI assistance</div>
-          <h4>Click for details</h4>
+          <p>[ more details ]</p>
         </a>
       </div>
 
@@ -66,7 +66,7 @@
           <img class="w3-image" src="/images/lampalagua.png" alt="Lampalagua.ar">
 
           <div>Simple website and CMS for <strong>Lampalagua Ediciones</strong>. A boutique book publisher</div>
-          <h4>Click for details</h4>
+          <p>[ more details ]</p>
         </a>
       </div>
     </div>
@@ -78,7 +78,7 @@
         <a href="/pages/bbboard.html"><img class="w3-image" src="/images/bbboard-g.png" alt="Bbboard.online" />
           <div>Interactive, multiuser whiteboard application</div>
           <div><i>Coming soon</i></div>
-          <h4>Click for details</h4>
+          <p>[ more details ]</p>
         </a>
       </div>
     </div>
@@ -162,7 +162,7 @@
           <p>
             Email: <span id="email"><i>Click the button to reveal</i></span>
           </p>
-          <button class="w3-button w3-light-grey" onclick="revealEmail()">
+          <button class="w3-button w3-light-grey" id="revealEmailButton" onclick="revealEmail()">
             Show Email
           </button>
         </div>
@@ -178,9 +178,17 @@
     </footer>
     <script>
       function revealEmail() {
-        const encodedEmail = "am9hcXVpbi5nYXJjaWFtbEBob3RtYWlsLmNvbQ==";
+        const encodedEmail = "am9hcXVpbkBnYXJjaWFtbC5jb20=";
+        const a = document.createElement("a");
+        a.href = "mailto:" + atob(encodedEmail);
+        a.innerHTML = atob(encodedEmail);
         const emailSpan = document.getElementById("email");
-        emailSpan.textContent = atob(encodedEmail);
+        emailSpan.innerHTML = "";
+        emailSpan.appendChild(a);
+        const button = document.getElementById("revealEmailButton");
+        button.style.display = "none";
+
+
       }
     </script>
 </body>
