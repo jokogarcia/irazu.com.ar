@@ -107,6 +107,8 @@ class CookieBanner extends HTMLElement {
 // Define the custom element
 customElements.define('cookie-banner', CookieBanner);
 window.onload = () => {
-  const banner = document.createElement('cookie-banner');
-  document.body.appendChild(banner);
+  if (!document.querySelector('cookie-banner')) {
+    const banner = document.createElement('cookie-banner');
+    document.body.appendChild(banner);
+  }
 };
