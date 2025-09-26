@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PostHog Cookie Consent Test</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  
+  <!-- Load PostHog script first -->
+  <script src="/js/posthog.js"></script>
+  <!-- Cookie Banner Component -->
+  <script src="/js/cookie-banner.component.js"></script>
+  
+  <!-- Then load cookie banner component -->
+  <script src="/js/cookie-banner.component.js"></script>
+  
+</head>
+<body class="w3-content" style="max-width: 1300px">
+  <div class="w3-container w3-padding-32">
+    <h1>PostHog Cookie Consent Test</h1>
+    
+    <div class="w3-panel w3-pale-blue w3-leftbar w3-border-blue">
+      <p>This page demonstrates the integration between the cookie banner and PostHog analytics.</p>
+      <p>Check your browser console to see the status messages.</p>
+    </div>
+    
+    <div class="w3-section">
+      <h2>Current Status</h2>
+      <p>Cookie Consent: <span id="consent-status">Checking...</span></p>
+      <p>PostHog Status: <span id="posthog-status">Checking...</span></p>
+    </div>
+    
+    <div class="w3-section">
+      <h2>Test Controls</h2>
+      <button onclick="resetCookieConsent()" class="w3-button w3-red w3-margin-right">Reset Cookie Consent</button>
+      <button onclick="checkStatus()" class="w3-button w3-blue">Check Status</button>
+    </div>
+  </div>
+  
+  <!-- Add the cookie banner component -->
+  <cookie-banner></cookie-banner>
+  
+  <script>
+    // Function to reset cookie consent
+    function resetCookieConsent() {
+      localStorage.removeItem('cookie_consent');
+      alert('Cookie consent has been reset. Refresh the page to see the banner again.');
+      location.reload();
+    }
+    
+    // Function to check and display current status
+    function checkStatus() {
+      const consentStatus = document.getElementById('consent-status');
+      const posthogStatus = document.getElementById('posthog-status');
+      
+      // Check cookie consent
+      const cookieConsent = localStorage.getItem('cookie_consent');
+      consentStatus.textContent = cookieConsent || 'Not set';
+      
+      // Check PostHog status
+      if (window.posthog) {
+        const isOptedOut = window.posthog.has_opted_out_capturing();
+        posthogStatus.textContent = isOptedOut ? 'Opted Out (Disabled)' : 'Active';
+      } else {
+        posthogStatus.textContent = 'Not initialized';
+      }
+    }
+    
+    // Check status on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      checkStatus();
+      
+      // Also check when cookie consent changes
+      document.addEventListener('cookie-consent-changed', function() {
+        // Wait a bit for PostHog to update its status
+        setTimeout(checkStatus, 500);
+      });
+    });
+  </script>
+</body>
+</html>
