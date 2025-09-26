@@ -65,7 +65,7 @@ function stopPostHog() {
   if (window.posthog && window.posthog.opt_out_capturing) {
     window.posthog.opt_out_capturing();
     console.log("PostHog analytics disabled");
-  }else{
+  } else {
     console.log("PostHog not initialized, nothing to disable");
   }
 }
