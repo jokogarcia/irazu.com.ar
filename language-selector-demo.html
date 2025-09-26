@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Language Selector Demo</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  
+  <!-- Language Selector Component -->
+  <script src="/js/language-selector.component.js"></script>
+  
+  <style>
+    body {
+      padding: 20px;
+    }
+    .test-section {
+      margin-top: 100px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Language selector web component -->
+  <language-selector></language-selector>
+  
+  <div class="w3-container test-section">
+    <h1>Language Selector Component Demo</h1>
+    <p>This page demonstrates the language selector web component in isolation.</p>
+    <p>The language selector automatically detects the current page and language from the URL.</p>
+    <p>It generates the appropriate links for the English, Spanish, and German versions of the current page.</p>
+    <p>The current language is automatically highlighted with bold text.</p>
+    
+    <h2>Testing</h2>
+    <p>To test the component's language detection:</p>
+    <ul>
+      <li>View this page as <a href="language-selector-demo.html">language-selector-demo.html</a> (English)</li>
+      <li>View this page as <a href="language-selector-demo.es.html">language-selector-demo.es.html</a> (Spanish)</li>
+      <li>View this page as <a href="language-selector-demo.de.html">language-selector-demo.de.html</a> (German)</li>
+    </ul>
+    
+    <p>The component will automatically detect the language from the URL and highlight the appropriate language link.</p>
+  </div>
+</body>
+</html>
