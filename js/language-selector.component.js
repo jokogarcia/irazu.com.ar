@@ -4,6 +4,26 @@ class LanguageSelector extends HTMLElement {
     this.attachShadow({ mode: 'open' });
   }
 
+  // Get flag emoji for a language
+  getFlagEmoji(language) {
+    const flags = {
+      'en': '🇬🇧',
+      'es': '🇪🇸',
+      'de': '🇩🇪'
+    };
+    return flags[language] || '🌐';
+  }
+  
+  // Get language name
+  getLanguageName(language) {
+    const names = {
+      'en': 'English',
+      'es': 'Español',
+      'de': 'Deutsch'
+    };
+    return names[language] || 'Unknown';
+  }
+
   connectedCallback() {
     // Get current page path
     const currentPath = window.location.pathname;
@@ -35,6 +55,35 @@ class LanguageSelector extends HTMLElement {
     const deLink = `${baseName}.de.html`;
     
     this.render(enLink, esLink, deLink, currentLanguage);
+    
+    // Set up dropdown toggle after rendering
+    setTimeout(() => {
+      this.setupDropdownToggle();
+    }, 0);
+  }
+  
+  setupDropdownToggle() {
+    const button = this.shadowRoot.getElementById('dropdown-btn');
+    const dropdown = this.shadowRoot.getElementById('dropdown-content');
+    
+    if (button && dropdown) {
+      // Toggle dropdown on button click
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropdown.classList.toggle('show');
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', () => {
+        dropdown.classList.remove('show');
+      });
+      
+      // Prevent closing when clicking inside dropdown
+      dropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+    }
   }
   
   render(enLink, esLink, deLink, currentLanguage) {
@@ -44,29 +93,91 @@ class LanguageSelector extends HTMLElement {
           display: block;
           font-family: inherit;
         }
-        .language-selector {
+        .language-dropdown {
           position: absolute;
           top: 10px;
           right: 10px;
           z-index: 1000;
-          background-color: rgba(255, 255, 255, 0.7);
-          padding: 5px 10px;
+        }
+        .dropdown-button {
+          display: flex;
+          align-items: center;
+          background-color: rgba(255, 255, 255, 0.8);
+          border: none;
           border-radius: 4px;
+          padding: 6px 12px;
+          cursor: pointer;
+          font-size: 14px;
         }
-        a {
-          color: inherit;
+        .dropdown-button:hover {
+          background-color: rgba(255, 255, 255, 0.9);
+        }
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          right: 0;
+          background-color: rgba(255, 255, 255, 0.9);
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+          border-radius: 4px;
+          overflow: hidden;
+        }
+        .dropdown-content.show {
+          display: block;
+        }
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
           text-decoration: none;
-          margin: 0 3px;
+          display: flex;
+          align-items: center;
         }
-        .active {
+        .dropdown-content a:hover {
+          background-color: #ddd;
+        }
+        .flag {
+          width: 20px;
+          height: 15px;
+          margin-right: 10px;
+          display: inline-block;
+          vertical-align: middle;
+          object-fit: contain;
+        }
+        .current-flag {
+          margin-right: 8px;
+        }
+        .language-name {
+          margin-left: 5px;
+          font-weight: normal;
+        }
+        .current-language {
           font-weight: bold;
         }
       </style>
       
-      <div class="language-selector">
-        <a href="${enLink}" hreflang="en" class="${currentLanguage === 'en' ? 'active' : ''}">EN</a> |
-        <a href="${esLink}" hreflang="es" class="${currentLanguage === 'es' ? 'active' : ''}">ES</a> |
-        <a href="${deLink}" hreflang="de" class="${currentLanguage === 'de' ? 'active' : ''}">DE</a>
+      <div class="language-dropdown">
+        <button class="dropdown-button" id="dropdown-btn">
+          <span class="flag current-flag">
+            ${this.getFlagEmoji(currentLanguage)}
+          </span>
+          <span class="current-language">${this.getLanguageName(currentLanguage)}</span>
+          <span style="margin-left: 8px;">▼</span>
+        </button>
+        <div class="dropdown-content" id="dropdown-content">
+          <a href="${enLink}" hreflang="en">
+            <span class="flag">${this.getFlagEmoji('en')}</span>
+            <span class="language-name">English</span>
+          </a>
+          <a href="${esLink}" hreflang="es">
+            <span class="flag">${this.getFlagEmoji('es')}</span>
+            <span class="language-name">Español</span>
+          </a>
+          <a href="${deLink}" hreflang="de">
+            <span class="flag">${this.getFlagEmoji('de')}</span>
+            <span class="language-name">Deutsch</span>
+          </a>
+        </div>
       </div>
     `;
   }
